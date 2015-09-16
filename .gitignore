@@ -1,5 +1,7 @@
 *.csv
 *.dump
 *.pyc
+*.log
+*.gz
 input
 
