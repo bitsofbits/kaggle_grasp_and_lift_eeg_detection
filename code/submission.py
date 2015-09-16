@@ -153,9 +153,8 @@ The submitted nets that are availble to run are:"""
             run_net(which, run_type)
         else:
             if run_type == "ensemble":
-                assert 1 == 0
-                output_path = os.path.join(config["submission_dir"], "ensemble.csv")
-                input_paths = [x["output_path"] for x in all_net_kwargs]                
+                output_path = os.path.join(config["SUBMISSION_PATH"], "ensemble.csv")
+                input_paths = [os.path.join(config["SUBMISSION_PATH"], x["output_name"]) + '.csv' for x in all_net_kwargs]                
                 ensemble.naive_ensemble(output_path, input_paths, ensemble_weights)
             else:
                 jobs = [Process(target=worker, args=(i, run_type)) for i in range(config["submission_workers"])]
