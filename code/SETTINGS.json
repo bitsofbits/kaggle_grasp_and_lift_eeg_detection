@@ -1,0 +1,9 @@
+{
+"SUBMISSION_PATH" : "../submissions",
+"MODEL_PATH" : "../models",
+"TRAIN_DATA_PATH" : "../input/train",
+"TEST_DATA_PATH" : "../input/test",
+"theano_flags" :     ["allow_gc=False,ioptimizer_including=local_remove_all_assert,device=gpu0",
+                      "allow_gc=False,ioptimizer_including=local_remove_all_assert,device=gpu1"],
+"submission_workers" : 4
+}

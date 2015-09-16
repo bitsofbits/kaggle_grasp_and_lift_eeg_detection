@@ -1,0 +1,336 @@
+---
+# Denchu's nets
+-
+    output_name: net_nds4_150e20_96478
+    net: net_nds4
+    max_epochs: 150
+    patience: 20
+    n_features: 4
+    min_freq: 0.2
+    max_freq: 50
+    valid_size: 4096
+    train_size: 20480
+    dense: 1024
+    validation: [3,6]
+    rate: 0.04
+-
+    output_name: net_nds4_dropch_150e20_0250_96387
+    net: net_nds4
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    n_features: 4
+    min_freq: 0.2
+    max_freq: 50
+    valid_size: 4096
+    train_size: 16384
+    dense: 1024
+    validation: [3,6]
+    rate: 0.04
+-
+    output_name: net_nds4_lr01_150e20_96380
+    net: net_nds4
+    max_epochs: 150
+    patience: 20
+    n_features: 4
+    min_freq: null
+    max_freq: 50
+    valid_size: 4096
+    train_size: 16384
+    dense: 1024
+    validation: [3,6]
+    rate: 0.01
+-
+    output_name: net_stf2_150e20_0050_baseline_96XXX
+    net: net_stf2
+    max_epochs: 150
+    patience: 20
+    n_features: 4
+    min_freq: null
+    max_freq: 50
+    valid_size: 4096
+    train_size: 16384
+    dense: 1024
+    validation: [3,6]
+    rate: 0.04
+-
+    output_name: net_stf2_dropch_150e20_0050_20xtrain_feat6_96444
+    net: net_stf2
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    n_features: 6
+    min_freq: null
+    max_freq: 50
+    valid_size: 4096
+    train_size: 20480
+    dense: 2048
+    validation: [3,6]
+    rate: 0.04
+-
+    output_name: net_stf2_dropch_150e20_0050_nochange_96XXX
+    net: net_stf2
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    n_features: 4
+    min_freq: null
+    max_freq: 50
+    valid_size: 4096
+    train_size: 16384
+    dense: 1024
+    validation: [3,6]
+    rate: 0.04
+-
+    output_name: net_stf2_dropch_150e20_0230_20xfea6_dense2048_96XXX
+    net: net_stf2
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    n_features: 6
+    min_freq: 0.2
+    max_freq: 30
+    valid_size: 4096
+    train_size: 20480
+    dense: 2048
+    validation: [3,6]
+    rate: 0.04
+-
+    output_name: net_stf2_dropch_150e20_0230_fea6_dense2048_val7
+    net: net_stf2
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    n_features: 6
+    min_freq: 0.2
+    max_freq: 30
+    valid_size: 4096
+    train_size: 20480
+    dense: 2048
+    validation: [7]
+    rate: 0.04
+-
+    output_name: net_stf2_dropch_150e20_0230_fea6_dense2048_val8
+    net: net_stf2
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    n_features: 6
+    min_freq: 0.2
+    max_freq: 30
+    valid_size: 4096
+    train_size: 20480
+    dense: 2048
+    validation: [8]
+    rate: 0.04
+-
+    output_name: net_stf7_dropch_fea6_150e20_0230_dense1024_val3
+    net: net_stf7
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    min_freq: 0.2
+    max_freq: 30
+    valid_size: 4096
+    train_size: 20480
+    dense: 1024
+    validation: [3]
+    rate: 0.04
+-
+    output_name: net_stf7_dropch_fea6_150e20_0230_dense1024_val5
+    net: net_stf7
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    min_freq: 0.2
+    max_freq: 30
+    valid_size: 4096
+    train_size: 20480
+    dense: 1024
+    validation: [5]
+    rate: 0.04
+-
+    output_name: net_stf7_dropch_fea6_150e20_0230_dense1024_val6
+    net: net_stf7
+    dropch: TRUE
+    max_epochs: 150
+    patience: 20
+    min_freq: 0.2
+    max_freq: 30
+    valid_size: 4096
+    train_size: 20480
+    dense: 1024
+    validation: [6]
+    rate: 0.04
+-
+    output_name: net_stf7_fea6_150e20_beta_12_40_dense512_val5
+    net: net_stf7
+    max_epochs: 150
+    patience: 20
+    min_freq: 12
+    max_freq: 40
+    valid_size: 4096
+    train_size: 20480
+    dense: 512
+    validation: [5]
+    rate: 0.04
+-
+    output_name: net_stf7_fea6_150e20_02_50_dense4096_3pVal
+    net: net_stf7
+    max_epochs: 150
+    patience: 20
+    min_freq: 0.2
+    max_freq: 50
+    valid_size: 4096
+    train_size: 20480
+    dense: 4096
+    validation: 6
+    rate: 0.04
+-
+    output_name: net_stf7_fea6_150e20_LPF_00_100_dense1024_val6_allfreqdata
+    net: net_stf7
+    max_epochs: 150
+    patience: 20
+    min_freq: null
+    max_freq: 100
+    valid_size: 4096
+    train_size: 20480
+    dense: 1024
+    validation: [6]
+    rate: 0.04
+-
+    output_name: net_stf7_fea6_150e20_gamma_30_60_dense512_val6
+    net: net_stf7
+    max_epochs: 150
+    patience: 20
+    min_freq: 30
+    max_freq: 60
+    valid_size: 4096
+    train_size: 20480
+    dense: 512
+    validation: [6]
+    rate: 0.04
+-
+    output_name: net_stf7_fea6_150e20_alpha_7_15_dense512_val6
+    net: net_stf7
+    max_epochs: 150
+    patience: 20
+    min_freq: 7
+    max_freq: 15
+    valid_size: 4096
+    train_size: 20480
+    dense: 512
+    validation: [6]
+    rate: 0.04
+-
+    output_name: net_stf7_fea6_150e20_delta_LPF_0_5_dense512_val6
+    net: net_stf7
+    max_epochs: 150
+    patience: 20
+    min_freq: null
+    max_freq: 5
+    valid_size: 4096
+    train_size: 20480
+    dense: 512
+    validation: [6]
+    rate: 0.04
+# TAHs nets
+- max_epochs: 40
+  max_freq: 30
+  min_freq: null
+  net: net34
+  output_name: net34
+  validation: [3, 6]
+- max_epochs: 40
+  max_freq: 50
+  min_freq: 0.2
+  net: net_nds4
+  output_name: net_nds4
+  validation: [3, 6]
+- max_epochs: 30
+  max_freq: 50
+  min_freq: 0.2
+  net: net_nds4
+  output_name: net_nds4b
+  filter1_width: 9
+  validation: [3, 6]
+- max_epochs: 40
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf2
+  output_name: net_stf2
+  validation: [3, 6]
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf2
+  dense: 512
+  maxout: 4
+  output_name: net_stf2_small
+  validation: 3
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf3
+  output_name: net_stf3
+  validation: 3
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf4
+  output_name: net_stf4
+  validation: [3, 6]
+- max_epochs: 40
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7
+  output_name: net_stf7
+  validation: [3, 6]
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7b
+  output_name: net_stf7b
+  validation: [3, 6]
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7b
+  output_name: net_stf7b_v3i
+  validation: 3
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7c
+  output_name: net_stf7c
+  validation: [3, 6]
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7i
+  output_name: net_stf7i
+  validation: [3, 6]
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7k
+  output_name: net_stf7k
+  validation: [3, 6]
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7m
+  output_name: net_stf7m
+  validation: [3, 6]
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7o
+  output_name: net_stf7o
+  validation: [3, 6]
+- max_epochs: 50
+  max_freq: 50
+  min_freq: 0.2
+  net: net_stf7r
+  output_name: net_stf7r
+  validation: [3, 6]
