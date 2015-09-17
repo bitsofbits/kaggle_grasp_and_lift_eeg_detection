@@ -8,6 +8,7 @@ import subprocess
 from multiprocessing import Process
 import yaml
 import json
+import argparse
 
 with open("SETTINGS.json") as file:
     config = json.load(file)
@@ -115,53 +116,71 @@ def worker(offset, run_type):
         output_name = all_net_kwargs[i]["output_name"]
         csv_path = os.path.join(config["SUBMISSION_PATH"], output_name) + ".csv"
         with open(csv_path + ".log", 'w') as log:
-            subprocess.check_call(["python", "submission.py", run_type, str(i)], stdout=log, env=env
+            subprocess.check_call(["python", "submission.py", '-r', run_type, '-n', str(i)], stdout=log, env=env
             )
 
 
 
-
 if __name__ == "__main__":
-    help = """`python submission.py` -- list this help message.
-`python submission.py run <N>` -- train net #N.
-`python submission.py run` -- train all nets. This will take a LONG time.
-`python submission.py ensemble -- compute the weighted average used in final submission.
 
-The directories for train, test, dumped models and csv output files are 
-set in SETTINGS.json. 
-
-When running all nets, the programs spreads the load out over `submission_workers`
-processes. Mulitple GPUs can be used by specifying an appropriate set of flags in 
-`theano_flags`. Both of these can be found in SETTINGS.json.
-
-Note that this first checks if the dump file for a given net exists, if so it uses 
-that, if not, it retrains the net (slow).  Then it checks if the csv file exists for
-this net, creating it if it doesn't exist.
-
-The submitted nets that are availble to run are:"""
+    help = """
+    `python submission.py -h` -- list this help message.
+    `python submission.py -r run -n <N>` -- train net #N.
+    `python submission.py -r run` -- train all nets. This will take a LONG time.
+    `python submission.py -r ensemble` -- compute the weighted average used in final submission.
     
-    if len(sys.argv) == 1:
-        print(help)
-        for i, x in enumerate(submitted_net_names()):
-            print("    {0}: {1}".format(i, x))
+    The directories for train, test, dumped models and csv output files are
+    set in SETTINGS.json.
+    
+    When running all nets, the programs spreads the load out over `submission_workers`
+    processes. Mulitple GPUs can be used by specifying an appropriate set of flags in
+    `theano_flags`. Both of these can be found in SETTINGS.json.
+    
+    Note that this first checks if the dump file for a given net exists, if so it uses
+    that, if not, it retrains the net (slow).  Then it checks if the csv file exists for
+    this net, creating it if it doesn't exist.
+    
+    The submitted nets that are availble to run are:
+
+"""
+
+    
+    net_names = "\n".join("    {0}: {1}".format(i, x) for (i, x) in 
+                            enumerate(submitted_net_names()))
+
+    brief = ("This is the main program to train the neural nets,\n"
+             "save the nets into model files and generate predictions\n"
+              "to testing set,and save it to csv output submission files.\n\n")
+    
+    parser = argparse.ArgumentParser(prog="python submission.py", 
+                                     formatter_class=argparse.RawDescriptionHelpFormatter,
+                                     description=brief+help+net_names)
+    
+    parser.add_argument('-r','--run_type', help='The run type' , required=True) 
+    parser.add_argument('-n','--net', type=int, help='Neural Net ID', default=-1) 
+    args = parser.parse_args()
+    
+    run_type = args.run_type
+    which = args.net
+        
+    ## show values ##
+    print ("The run type is: %s" % run_type )
+    print ("The network to train: %s" % which )
+    
+    if which != -1:
+        assert run_type in ["run", "test_csv", "test_dump", "dry"], run_type
+        print("Running net: " + str(which) + " with runtype of: " + str(run_type))
+        run_net(which, run_type)
     else:
-        assert len(sys.argv) in [2,3], sys.argv
-        run_type = sys.argv[1]
-        if len(sys.argv) == 3:
-            assert run_type in ["run", "test_csv", "test_dump", "dry"], run_type
-            which = int(sys.argv[2])
-            run_net(which, run_type)
+        if run_type == "ensemble":
+            output_path = os.path.join(config["SUBMISSION_PATH"], "ensemble.csv")
+            input_paths = [os.path.join(config["SUBMISSION_PATH"], x["output_name"]) + '.csv' for x in all_net_kwargs]
+            ensemble.naive_ensemble(output_path, input_paths, ensemble_weights)
+            print("Running ensemble")
         else:
-            if run_type == "ensemble":
-                output_path = os.path.join(config["SUBMISSION_PATH"], "ensemble.csv")
-                input_paths = [os.path.join(config["SUBMISSION_PATH"], x["output_name"]) + '.csv' for x in all_net_kwargs]                
-                ensemble.naive_ensemble(output_path, input_paths, ensemble_weights)
-            else:
-                jobs = [Process(target=worker, args=(i, run_type)) for i in range(config["submission_workers"])]
-                for p in jobs:
-                    p.start()
-                for p in jobs:
-                    p.join()
-    
-
-
+            print("Running nets in parallel")
+            jobs = [Process(target=worker, args=(i, run_type)) for i in range(config["submission_workers"])]
+            for p in jobs:
+                p.start()
+            for p in jobs:
+                p.join()
