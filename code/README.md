@@ -1,7 +1,13 @@
 README
+=======
 
+**Table of Contents**
 
-[TOC]
+- [1. How To Generate the Solution](#1. How To Generate the Solution)
+	- [1.1 Hardware / OS](#1.1 Hardware / OS)
+	- [1.2 Installing Dependencies](#1.2 Installing Dependencies)
+	- [1.3 How to recreate test data.](#1.3 How to recreate test data.)
+	- [1.4 Making predictions on new data](#1.4 Making predictions on new data)
 
 # 1. How To Generate the Solution
 
