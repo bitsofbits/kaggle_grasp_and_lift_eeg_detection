@@ -383,9 +383,8 @@ before starting the run.
 
 ### Differences from our third place score
 
-We did not completely record all of the training parameters used in a few of the
-earlier nets and as a result had to take our best guess at a few of the
-parameters used in these nets. As a result the score produced by submission.py
+We could not completely recreate all of the training parameters used in a few of the
+earlier nets and as a result the score produced by submission.py
 doesn't exactly reproduce our third place score. Instead, it results in a
 slightly higher score of 0.98001. In addition, despite setting the random seed,
 we have observed some differences between different machines, perhaps due to the
