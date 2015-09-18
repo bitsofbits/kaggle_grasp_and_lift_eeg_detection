@@ -6,9 +6,29 @@
 
 **Competition:** [Grasp-and-Lift EEG Detection](http://www.kaggle.com/c/grasp-and-lift-eeg-detection)
 
-Table of Contents
+**Table of Contents**
 
-[TOC]
+- [1. Summary](#1. Summary)
+- [2. Features Selection / Extraction](#2. Features Selection / Extraction)
+- [3. Modeling Techniques and Training](#3. Modeling Techniques and Training)
+	- [3.1 Modelling](#3.1 Modelling)
+	- [3.2 Training](#3.2 Training)
+	- [3.3 Ensembling](#3.3 Ensembling)
+- [4. Code Description](#4. Code Description)
+- [5. Dependencies](#5. Dependencies)
+- [6. How To Generate the Solution (aka README file)](#6. How To Generate the Solution (aka README file))
+	- [6.1 Hardware / OS](#6.1 Hardware / OS)
+	- [6.2 Installing Dependencies](#6.2 Installing Dependencies)
+	- [6.3 How to recreate test data.](#6.3 How to recreate test data.)
+	- [6.4 Making predictions on new data](#6.4 Making predictions on new data)
+- [7. Additional Comments and Observations](#7. Additional Comments and Observations)
+	- [7.1 EEG features](#7.1 EEG features)
+	- [7.2 Whitening and LDA classifier](#7.2 Whitening and LDA classifier)
+	- [7.3  PCA, SVD, ICA](#7.3 PCA, SVD, ICA)
+	- [7.4 Ideas that were tried and abandoned](#7.4 Ideas that were tried and abandoned)
+- [8. Simple Features and Methods](#8. Simple Features and Methods)
+- [9. Figures](#9. Figures)
+- [10. References](#10. References)
 
 # 1. Summary
 This is our 3rd place solution to the [Grasp-and-Lift EEG Detection Competition](http://www.kaggle.com/c/grasp-and-lift-eeg-detection) on [Kaggle](http://www.kaggle.com).
