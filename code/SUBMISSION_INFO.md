@@ -113,17 +113,17 @@ increase the diversity of the result.
 
 Among the things that made it to the final ensemble were:
 
-	- Base nets with various architectures
-	- Nets trained with different validation serieses.
-	  For instance, val1 means the network was trained with all other training
-      serieses except series 1 and validated with series 1.
-	- Nets trained with a variety of frequency bands that are known to be useful
-	  in EEG research. For example, Delta, Theta, Alpha, Beta, and Gamma.
-    - Nets trained with selected channels.
-      Primarily, dropping the first two channels, Fp1 & Fp2 as these are ussually
-      contaminated by occular and other sources of noise. When we explored the dataset,
-      we actually found out that these two channels were highly contaminated with
-      very high aplitude occular artifacts.
+- Base nets with various architectures
+- Nets trained with different validation serieses.
+  For instance, val1 means the network was trained with all other training
+  serieses except series 1 and validated with series 1.
+- Nets trained with a variety of frequency bands that are known to be useful
+  in EEG research. For example, Delta, Theta, Alpha, Beta, and Gamma.
+- Nets trained with selected channels.
+  Primarily, dropping the first two channels, Fp1 & Fp2 as these are ussually
+  contaminated by occular and other sources of noise. When we explored the dataset,
+  we actually found out that these two channels were highly contaminated with
+  very high aplitude occular artifacts.
 
 ## 3.3 Ensembling
 
@@ -260,22 +260,22 @@ These support files include:
 
 Here is the hardware configuration of the main box we used for this competition:
 
-	# CPU
-    6 core / 12 virtual with hyperthreding - Intel(R) Xeon(R) CPU E5-2667 0 @ 2.90GHz base clock + turbo+
+### CPU
+6 core / 12 virtual with hyperthreding - Intel(R) Xeon(R) CPU E5-2667 0 @ 2.90GHz base clock + turbo+
 
-    # GPU
-    NVIDIA GM204 [GeForce GTX 980]
-	NVIDIA GM204 [GeForce GTX 980]
+### GPU
+NVIDIA GM204 [GeForce GTX 980]
+NVIDIA GM204 [GeForce GTX 980]
 
-    # Memory
-    DDR3 DIMM Mem: 32G  Swap: 225G
+### Memory
+DDR3 DIMM Mem: 32G  Swap: 225G
 
-    # Hard Drive Space
-    root: / 	100GB
-    home: /home 1.8TB
+### Hard Drive Space
+root: / 	100GB
+home: /home 1.8TB
 
-    # OS
-    Ubuntu 14.04 LTS
+### OS
+Ubuntu 14.04 LTS
 
 ## 6.2 Installing Dependencies
 
@@ -352,7 +352,7 @@ these four steps:
     For instance `"theano_flags" : ["device=gpu0", "device=gpu1"] will run half
     the workers on *gpu0* and half on *gpu1*.
 
-3. Run `python submission.py run` -- this will run all the models specified in
+3. Run `python submission.py -r run` -- this will run all the models specified in
 *final_nets.yml*, write the train models to `dump_dir` and the csv output files
 to `submission_dir`. If a dump file with the corresponding name already exists
 in *dump_dir*, then the training step will be skipped. If a csv file with the
@@ -360,7 +360,7 @@ corresponding name already exists in *submission_dir* then the submission
 creation step will also be skipped. If all nets are being rerun from scratch,
 this may take several days, depending on your hardware.
 
-4. Run `python submission.py ensemble`. This will comput a weighted average of
+4. Run `python submission.py -r ensemble`. This will comput a weighted average of
 all of the nets created in step 3 using the weighting scheme we used in our best
 submission. The results will be written to `submission_dir` with the name
 *ensemble.csv*.
@@ -368,16 +368,16 @@ submission. The results will be written to `submission_dir` with the name
 In addition to the above procedure for generating *ensemble.csv*,
 *submission.py* has a few other potentially useful commands.
 
-- `python submission.py dry` -- performs a dry run; instantiating all nets but
+- `python submission.py -r dry` -- performs a dry run; instantiating all nets but
 not training
 
-- `python submission.py` -- show a numbered list of the nets in
+- `python submission.py -h` -- show a numbered list of the nets in
 *final_nets.yml*
 
-- `python submission.py run <N>` -- train and dump only net
+- `python submission.py -r run -n <N>` -- train and dump only net
 number N, where N is the number given py the previous command.
 
-Note that `python submission.py run` **will not** overwrite already existing
+Note that `python submission.py -r run` **will not** overwrite already existing
 files, so if you wish to replace files you will have to remove them manually
 before starting the run.
 
