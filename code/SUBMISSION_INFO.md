@@ -381,6 +381,17 @@ Note that `python submission.py -r run` **will not** overwrite already existing
 files, so if you wish to replace files you will have to remove them manually
 before starting the run.
 
+### Differences from our third place score
+
+We did not completely record all of the training parameters used in a few of the
+earlier nets and as a result had to take our best guess at a few of the
+parameters used in these nets. As a result the score produced by submission.py
+doesn't exactly reproduce our third place score. Instead, it results in a
+slightly higher score of 0.98001. In addition, despite setting the random seed,
+we have observed some differences between different machines, perhaps due to the
+underlying hardware. As a result, rerunning this code may result in slightly
+different scores, although they should be quite close.
+
 ## 6.4 Making predictions on new data
 
 To make a prediction on a new test set, one would simply make a new test
